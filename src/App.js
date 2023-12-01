@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css"
+import NavBar from "./components/NavBar"
+import AddOrganisation from "./pages/AddOrganisation";
+import ListOrganisations from "./pages/ListOrganisations"
+import EditOrganisation from "./pages/EditOrganisation"
+import ViewOrganisation from "./pages/ViewOrganisation"
+import AddOrganisationHR from "./pages/AddOrganisationHR";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <NavBar />
+        <Routes>
+          <Route exact path="/organisations" element={<ListOrganisations />} />
+          <Route exact path="/add-organisation" element={<AddOrganisation />} />
+          <Route exact path="/edit-organisation/:organisationId" element={<EditOrganisation />} />
+          <Route exact path="/view-organisation/:organisationId" element={<ViewOrganisation />} />
+          <Route exact path="/add-organisation-hr/:organisationId" element={<AddOrganisationHR />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
